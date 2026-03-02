@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Risk Management Dashboard - Wireframe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1 class="header-title" id="dashboard-title">&#x1f3e6; SBI Risk Management Dashboard</h1>
+        <div class="header-right">
+            <button class="filter-btn">&#x1f4c5; FY 2025-26</button>
+            <button class="filter-btn">&#x1f50d; All Risk Categories</button>
+            <button class="filter-btn">&#x2b07; Export Report</button>
+        </div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div class="alert-banner" id="alert-banner">
+        <span class="icon">&#x26a0;&#xfe0f;</span>
+        <div style="flex: 1;">
+            <strong>Alert:</strong> LCR (Liquidity Coverage Ratio) is under stress at 115.8% &mdash; approaching the 110% regulatory limit. Immediate review recommended.
+        </div>
+        <button class="alert-close" id="alert-close" title="Close alert">&#x2715;</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Nav Tabs -->
+        <div class="nav-tabs" id="navTabs">
+            <div class="nav-tab active" data-tab="overview">Overview</div>
+            <div class="nav-tab" data-tab="credit">Credit Risk</div>
+            <div class="nav-tab" data-tab="capital">Capital Risk</div>
+            <div class="nav-tab" data-tab="liquidity">Liquidity Risk</div>
+            <div class="nav-tab" data-tab="market">Market Risk</div>
+            <div class="nav-tab" data-tab="operational">Operational Risk</div>
+            <div class="nav-tab" data-tab="performance">Performance</div>
+            <div class="nav-tab" data-tab="problems">Problem Areas</div>
+        </div>
+
+        <!-- ==================== TAB: OVERVIEW ==================== -->
+        <div class="tab-content active" id="tab-overview">
+
+        <!-- KPI Summary Cards -->
+        <div class="section-title">Key Performance Indicators <span class="badge">Q3 FY26 Latest</span></div>
+        <div class="kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 16px;">
+            <div class="kpi-card">
+                <div class="kpi-label">Gross NPA Ratio</div>
+                <div class="kpi-value">1.57%</div>
+                <div class="kpi-target">Target: &lt; 2.0%</div>
+                <div class="kpi-trend improving">&#x2193; Improving (was 1.82%)</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Net NPA Ratio</div>
+                <div class="kpi-value">0.39%</div>
+                <div class="kpi-target">Target: &lt; 0.5%</div>
+                <div class="kpi-trend improving">&#x2193; Improving (was 0.47%)</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Provision Coverage</div>
+                <div class="kpi-value">88.5%</div>
+                <div class="kpi-target">Target: &gt; 70%</div>
+                <div class="kpi-trend improving">&#x2191; Improving (was 85.2%)</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Capital Adequacy</div>
+                <div class="kpi-value">14.04%</div>
+                <div class="kpi-target">Target: &gt; 12.5%</div>
+                <div class="kpi-trend stable">&#x2192; Stable</div>
+                <div class="kpi-bar blue"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">LCR</div>
+                <div class="kpi-value" style="color: #de350b;">115.8%</div>
+                <div class="kpi-target">Target: &gt; 110%</div>
+                <div class="kpi-trend stressed">&#x26a0; Stressed (declining)</div>
+                <div class="kpi-bar red"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">NSFR</div>
+                <div class="kpi-value">118.2%</div>
+                <div class="kpi-target">Target: &gt; 100%</div>
+                <div class="kpi-trend stable">&#x2192; Stable</div>
+                <div class="kpi-bar blue"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">CASA Ratio</div>
+                <div class="kpi-value">45.8%</div>
+                <div class="kpi-target">Target: &gt; 40%</div>
+                <div class="kpi-trend improving">&#x2191; Up from 44.2%</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Return on Assets</div>
+                <div class="kpi-value">0.82%</div>
+                <div class="kpi-target">Target: &gt; 0.75%</div>
+                <div class="kpi-trend improving">&#x2191; Up from 0.71%</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Return on Equity</div>
+                <div class="kpi-value">14.2%</div>
+                <div class="kpi-target">Target: &gt; 12%</div>
+                <div class="kpi-trend stable">&#x2192; Stable</div>
+                <div class="kpi-bar blue"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Cost-to-Income</div>
+                <div class="kpi-value">48.3%</div>
+                <div class="kpi-target">Target: &lt; 50%</div>
+                <div class="kpi-trend improving">&#x2193; Down from 51.2%</div>
+                <div class="kpi-bar green"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Net Interest Margin</div>
+                <div class="kpi-value">3.12%</div>
+                <div class="kpi-target">Target: &gt; 3.0%</div>
+                <div class="kpi-trend stable">&#x2192; Stable</div>
+                <div class="kpi-bar blue"></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Priority Sector %</div>
+                <div class="kpi-value">42.1%</div>
+                <div class="kpi-target">RBI Min: 40%</div>
+                <div class="kpi-trend stable">&#x2192; Compliant</div>
+                <div class="kpi-bar blue"></div>
+            </div>
+        </div>
+
+        <!-- Risk Gauges -->
+        <div class="section-title">Risk Health at a Glance</div>
+        <div class="chart-card" style="margin-bottom: 28px;">
+            <div class="gauge-grid">
+                <div class="gauge-box">
+                    <div class="gauge-circle good">&#x2713;</div>
+                    <div style="font-weight:600; font-size:13px;">Credit Risk</div>
+                    <div class="gauge-label">All KPIs within target</div>
+                </div>
+                <div class="gauge-box">
+                    <div class="gauge-circle good">&#x2713;</div>
+                    <div style="font-weight:600; font-size:13px;">Capital Risk</div>
+                    <div class="gauge-label">CAR &amp; CET-1 stable</div>
+                </div>
+                <div class="gauge-box">
+                    <div class="gauge-circle warn">&#x26a0;</div>
+                    <div style="font-weight:600; font-size:13px;">Liquidity Risk</div>
+                    <div class="gauge-label">LCR nearing limit</div>
+                </div>
+                <div class="gauge-box">
+                    <div class="gauge-circle good">&#x2713;</div>
+                    <div style="font-weight:600; font-size:13px;">Operational Risk</div>
+                    <div class="gauge-label">Fraud down, uptime up</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="section-title">Trend Analysis</div>
+        <div class="two-col">
+            <div class="chart-card">
+                <h3>NPA &amp; Slippage Trend (Q1&ndash;Q3 FY26)</h3>
+                <div class="chart-container"><canvas id="chartOverviewNPA"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>Risk Category Distribution</h3>
+                <div class="chart-container"><canvas id="chartOverviewDonut"></canvas></div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="chart-card">
+                <h3>Capital &amp; Liquidity Ratios</h3>
+                <div class="chart-container"><canvas id="chartOverviewCapital"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <h3>Cyber Fraud Attempts</h3>
+                <div class="chart-container"><canvas id="chartOverviewFraud"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Problem Areas -->
+        <div class="section-title">Identified Problem Areas <span class="badge">8 Issues</span></div>
+        <div class="problem-grid">
+            <div class="problem-card credit">
+                <div class="p-num">#1</div>
+                <div class="p-title">Rising NPAs</div>
+                <div class="p-desc">Increase in loans unpaid for 90+ days due to economic slowdown</div>
+                <div class="p-impact">&#x2193; Reduced profitability</div>
+            </div>
+            <div class="problem-card credit">
+                <div class="p-num">#2</div>
+                <div class="p-title">Delayed EMI Payments</div>
+                <div class="p-desc">Customers missing monthly installments from income instability</div>
+                <div class="p-impact">&#x26a0; Cash flow disruption</div>
+            </div>
+            <div class="problem-card market">
+                <div class="p-num">#3</div>
+                <div class="p-title">Sector-Specific Defaults</div>
+                <div class="p-desc">High defaults in MSME/Agriculture from seasonal income</div>
+                <div class="p-impact">&#x1f4cd; Concentrated credit risk</div>
+            </div>
+            <div class="problem-card operational">
+                <div class="p-num">#4</div>
+                <div class="p-title">Weak Early Warning</div>
+                <div class="p-desc">Risk identified too late due to lack of real-time monitoring</div>
+                <div class="p-impact">&#x2191; Higher default conversion</div>
+            </div>
+            <div class="problem-card credit">
+                <div class="p-num">#5</div>
+                <div class="p-title">Poor Recovery Rate</div>
+                <div class="p-desc">Low success in loan recovery from legal delays</div>
+                <div class="p-impact">&#x2191; Increased write-offs</div>
+            </div>
+            <div class="problem-card capital">
+                <div class="p-num">#6</div>
+                <div class="p-title">Loan Restructuring</div>
+                <div class="p-desc">Growing restructured loans from borrower financial stress</div>
+                <div class="p-impact">&#x1f4a3; Hidden future NPAs</div>
+            </div>
+            <div class="problem-card liquidity">
+                <div class="p-num">#7</div>
+                <div class="p-title">Regional Risk Imbalance</div>
+                <div class="p-desc">Some regions show higher defaults from local economic conditions</div>
+                <div class="p-impact">&#x1f4cd; Geographic concentration</div>
+            </div>
+            <div class="problem-card operational">
+                <div class="p-num">#8</div>
+                <div class="p-title">Credit Appraisal Gaps</div>
+                <div class="p-desc">Risky customers approved due to outdated credit scoring</div>
+                <div class="p-impact">&#x2193; Portfolio deterioration</div>
+            </div>
+        </div>
+
+        <!-- Full Data Table -->
+        <div class="table-card">
+            <h3>
+                Detailed KPI Tracker
+                <button class="export-btn">&#x1f4e5; Export CSV</button>
+            </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Problem Area</th>
+                        <th>Risk Category</th>
+                        <th>KPI</th>
+                        <th>Q1 FY26</th>
+                        <th>Q2 FY26</th>
+                        <th>Q3 FY26</th>
+                        <th>Target</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Rising NPAs</td><td><span class="risk-tag credit">Credit Risk</span></td><td>Gross NPA Ratio (%)</td><td>1.82</td><td>1.73</td><td class="val-good">1.57</td><td>2.0</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                    <tr><td>1</td><td>Rising NPAs</td><td><span class="risk-tag credit">Credit Risk</span></td><td>Net NPA Ratio (%)</td><td>0.47</td><td>0.42</td><td class="val-good">0.39</td><td>0.5</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                    <tr><td>1</td><td>Rising NPAs</td><td><span class="risk-tag credit">Credit Risk</span></td><td>Provision Coverage Ratio (%)</td><td>85.2</td><td>86.8</td><td class="val-good">88.5</td><td>70</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                    <tr><td>2</td><td>Delayed EMI Payments</td><td><span class="risk-tag credit">Credit Risk</span></td><td>Slippage Ratio (%)</td><td>0.75</td><td>0.45</td><td class="val-good">0.40</td><td>0.6</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                    <tr><td>2</td><td>Delayed EMI Payments</td><td><span class="risk-tag credit">Credit Risk</span></td><td>SMA-2 (61-90 DPD %)</td><td>0.72</td><td>0.70</td><td class="val-bad">0.68</td><td>0.6</td><td><span class="trend-badge stressed">&#x26a0; Above threshold</span></td></tr>
+                    <tr><td>3</td><td>Sector-Specific Defaults</td><td><span class="risk-tag market">Market Risk</span></td><td>Net Interest Margin (NIM)</td><td>3.10</td><td>3.15</td><td>3.12</td><td>3.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>3</td><td>Sector-Specific Defaults</td><td><span class="risk-tag market">Market Risk</span></td><td>Priority Sector Lending (%)</td><td>41.8</td><td>42.0</td><td>42.1</td><td>40</td><td><span class="trend-badge stable">&#x2713; Compliant</span></td></tr>
+                    <tr><td>4</td><td>Weak Early Warning</td><td><span class="risk-tag operational">Operational</span></td><td>YONO System Uptime (%)</td><td>99.85</td><td>99.92</td><td class="val-good">99.95</td><td>99.9</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                    <tr><td>4</td><td>Weak Early Warning</td><td><span class="risk-tag operational">Operational</span></td><td>Early Warning Alerts</td><td>356</td><td>352</td><td>342</td><td>Track</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>5</td><td>Poor Recovery Rate</td><td><span class="risk-tag credit">Credit Risk</span></td><td>Credit Cost (%)</td><td>0.47</td><td>0.39</td><td class="val-good">0.29</td><td>0.5</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>6</td><td>Loan Restructuring</td><td><span class="risk-tag capital">Capital Risk</span></td><td>Capital Adequacy Ratio (%)</td><td>14.63</td><td>14.30</td><td>14.04</td><td>12.5</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>6</td><td>Loan Restructuring</td><td><span class="risk-tag capital">Capital Risk</span></td><td>CET-1 Ratio (%)</td><td>11.10</td><td>10.80</td><td>10.99</td><td>10.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>6</td><td>Loan Restructuring</td><td><span class="risk-tag capital">Capital Risk</span></td><td>Leverage Ratio (%)</td><td>5.92</td><td>5.88</td><td>5.85</td><td>4.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>7</td><td>Regional Risk Imbalance</td><td><span class="risk-tag liquidity">Liquidity</span></td><td>LCR (Liquidity Coverage)</td><td>118.5</td><td>116.2</td><td class="val-bad">115.8</td><td>110</td><td><span class="trend-badge stressed">&#x26a0; Stressed</span></td></tr>
+                    <tr><td>7</td><td>Regional Risk Imbalance</td><td><span class="risk-tag liquidity">Liquidity</span></td><td>NSFR (Net Stable Funding)</td><td>117.8</td><td>118.0</td><td>118.2</td><td>100</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    <tr><td>8</td><td>Credit Appraisal Gaps</td><td><span class="risk-tag operational">Operational</span></td><td>Cyber Fraud Attempts</td><td>145</td><td>162</td><td class="val-good">128</td><td>150</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                    <tr><td>9</td><td>Profitability Efficiency</td><td><span class="risk-tag market">Performance</span></td><td>Return on Assets (%)</td><td>0.71</td><td>0.78</td><td class="val-good">0.82</td><td>0.75</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                    <tr><td>9</td><td>Profitability Efficiency</td><td><span class="risk-tag market">Performance</span></td><td>CASA Ratio (%)</td><td>44.2</td><td>45.0</td><td class="val-good">45.8</td><td>40</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                    <tr><td>9</td><td>Profitability Efficiency</td><td><span class="risk-tag market">Performance</span></td><td>Cost-to-Income (%)</td><td>51.2</td><td>49.8</td><td class="val-good">48.3</td><td>50</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        </div><!-- end tab-overview -->
+
+        <!-- ==================== TAB: CREDIT RISK ==================== -->
+        <div class="tab-content" id="tab-credit">
+            <div class="page-header">
+                <h2>Credit Risk Dashboard</h2>
+                <p>Monitoring asset quality, NPA trends, slippage, and credit cost across the portfolio</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Gross NPA Ratio</div>
+                    <div class="kpi-value">1.57%</div>
+                    <div class="kpi-target">Target: &lt; 2.0%</div>
+                    <div class="kpi-trend improving">&#x2193; 1.82% &rarr; 1.57%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Net NPA Ratio</div>
+                    <div class="kpi-value">0.39%</div>
+                    <div class="kpi-target">Target: &lt; 0.5%</div>
+                    <div class="kpi-trend improving">&#x2193; 0.47% &rarr; 0.39%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Provision Coverage</div>
+                    <div class="kpi-value">88.5%</div>
+                    <div class="kpi-target">Target: &gt; 70%</div>
+                    <div class="kpi-trend improving">&#x2191; 85.2% &rarr; 88.5%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Credit Cost</div>
+                    <div class="kpi-value">0.29%</div>
+                    <div class="kpi-target">Target: &lt; 0.5%</div>
+                    <div class="kpi-trend stable">&#x2192; 0.47% &rarr; 0.29%</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+            </div>
+
+            <div class="section-title" style="margin-top: 24px;">Special Mention Accounts (Early Warning) <span class="badge">Q3 FY26</span></div>
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">SMA-0 (1-30 DPD)</div>
+                    <div class="kpi-value">2.85%</div>
+                    <div class="kpi-target">Watch: &lt; 3.5%</div>
+                    <div class="kpi-trend improving">&#x2193; Down from 3.12%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">SMA-1 (31-60 DPD)</div>
+                    <div class="kpi-value">1.42%</div>
+                    <div class="kpi-target">Watch: &lt; 2.0%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable at 1.4x%</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">SMA-2 (61-90 DPD)</div>
+                    <div class="kpi-value" style="color: #e6a817;">0.68%</div>
+                    <div class="kpi-target">Watch: &lt; 0.6%</div>
+                    <div class="kpi-trend stressed">&#x26a0; Above threshold</div>
+                    <div class="kpi-bar orange"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Restructured Assets</div>
+                    <div class="kpi-value">1.28%</div>
+                    <div class="kpi-target">Watch: &lt; 1.5%</div>
+                    <div class="kpi-trend improving">&#x2193; Down from 1.45%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>NPA Trend &mdash; Gross vs Net (Q1&ndash;Q3 FY26)</h3>
+                    <div class="chart-container"><canvas id="chartCreditNPA"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Slippage vs Recovery Rate</h3>
+                    <div class="chart-container"><canvas id="chartCreditSlippage"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>Sector-wise NPA Breakdown</h3>
+                    <div class="chart-container"><canvas id="chartCreditSector"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Credit Cost Trend</h3>
+                    <div class="chart-container"><canvas id="chartCreditCost"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly KPI Detail</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Target</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Gross NPA Ratio (%)</td><td>1.82</td><td>1.73</td><td class="val-good">1.57</td><td class="val-good">-0.16</td><td>2.0</td><td><span class="trend-badge improving">&#x2713; Within</span></td></tr>
+                        <tr><td>Net NPA Ratio (%)</td><td>0.47</td><td>0.42</td><td class="val-good">0.39</td><td class="val-good">-0.03</td><td>0.5</td><td><span class="trend-badge improving">&#x2713; Within</span></td></tr>
+                        <tr><td>Slippage Ratio (%)</td><td>0.75</td><td>0.45</td><td class="val-good">0.40</td><td class="val-good">-0.05</td><td>0.6</td><td><span class="trend-badge improving">&#x2713; Within</span></td></tr>
+                        <tr><td>Credit Cost (%)</td><td>0.47</td><td>0.39</td><td class="val-good">0.29</td><td class="val-good">-0.10</td><td>0.5</td><td><span class="trend-badge improving">&#x2713; Within</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-card">
+                <h3>Related Problem Areas</h3>
+                <div class="detail-row" style="margin-bottom:0;">
+                    <div>
+                        <ul class="info-list">
+                            <li><span class="label">#1 Rising NPAs</span><span class="severity-med">Medium</span></li>
+                            <li><span class="label">#2 Delayed EMI Payments</span><span class="severity-high">High</span></li>
+                            <li><span class="label">#5 Poor Recovery Rate</span><span class="severity-med">Medium</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size:13px;">Key Root Causes</h3>
+                        <p style="font-size:12px; color:#666; line-height:1.6;">Economic slowdown, poor borrower screening, income instability, job loss, weak follow-up system, political lending pressure, legal delays in recovery</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end tab-credit -->
+
+        <!-- ==================== TAB: CAPITAL RISK ==================== -->
+        <div class="tab-content" id="tab-capital">
+            <div class="page-header">
+                <h2>Capital Risk Dashboard</h2>
+                <p>Monitoring capital adequacy, CET-1 buffers, and regulatory compliance</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Capital Adequacy Ratio (CAR)</div>
+                    <div class="kpi-value">14.04%</div>
+                    <div class="kpi-target">Regulatory Min: 12.5%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable (buffer: +1.54%)</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">CET-1 Ratio</div>
+                    <div class="kpi-value">10.99%</div>
+                    <div class="kpi-target">Regulatory Min: 10.0%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable (buffer: +0.99%)</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Leverage Ratio</div>
+                    <div class="kpi-value">5.85%</div>
+                    <div class="kpi-target">Basel III Min: 4.0%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable (buffer: +1.85%)</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Capital Buffer Above Minimum</div>
+                    <div class="kpi-value" style="color:#e6a817;">+1.54%</div>
+                    <div class="kpi-target">Comfortable range: &gt; 2%</div>
+                    <div class="kpi-trend stressed">&#x26a0; Buffer narrowing</div>
+                    <div class="kpi-bar orange"></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>CAR &amp; CET-1 Quarterly Trend</h3>
+                    <div class="chart-container"><canvas id="chartCapitalTrend"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Capital Buffer Erosion</h3>
+                    <div class="chart-container"><canvas id="chartCapitalBuffer"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly KPI Detail</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Regulatory Min</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Capital Adequacy Ratio (%)</td><td>14.63</td><td>14.30</td><td>14.04</td><td class="val-bad">-0.26</td><td>12.5</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                        <tr><td>CET-1 Ratio (%)</td><td>11.10</td><td>10.80</td><td>10.99</td><td class="val-good">+0.19</td><td>10.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-card">
+                    <h3>Risk Assessment</h3>
+                    <ul class="info-list">
+                        <li><span class="label">Overall Capital Health</span><span class="severity-med">Adequate</span></li>
+                        <li><span class="label">Buffer Trend</span><span class="severity-med">Narrowing</span></li>
+                        <li><span class="label">Restructuring Impact</span><span class="severity-high">Watch</span></li>
+                        <li><span class="label">Regulatory Compliance</span><span class="severity-low">Compliant</span></li>
+                    </ul>
+                </div>
+                <div class="detail-card">
+                    <h3>Related Problem Area</h3>
+                    <p><strong>#6 Loan Restructuring</strong> &mdash; Growing number of restructured loans from borrower financial stress could create hidden future NPAs, putting pressure on capital buffers.</p>
+                    <div style="margin-top:12px;">
+                        <span style="font-size:12px; color:#999;">Recommendation:</span>
+                        <p style="font-size:13px;">Stress-test capital buffers against restructured loan portfolio. Ensure provisioning is adequate for potential slippage from restructured assets.</p>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end tab-capital -->
+
+        <!-- ==================== TAB: LIQUIDITY RISK ==================== -->
+        <div class="tab-content" id="tab-liquidity">
+            <div class="page-header">
+                <h2>Liquidity Risk Dashboard</h2>
+                <p>Monitoring liquidity coverage, funding stability, and regulatory compliance</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">LCR (Liquidity Coverage Ratio)</div>
+                    <div class="kpi-value" style="color:#de350b;">115.8%</div>
+                    <div class="kpi-target">Regulatory Min: 110%</div>
+                    <div class="kpi-trend stressed">&#x26a0; Stressed &mdash; declining 3 quarters</div>
+                    <div class="kpi-bar red"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">NSFR (Net Stable Funding)</div>
+                    <div class="kpi-value">118.2%</div>
+                    <div class="kpi-target">Regulatory Min: 100%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable (buffer: +18.2%)</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">LCR Buffer Above Min</div>
+                    <div class="kpi-value" style="color:#de350b;">5.8%</div>
+                    <div class="kpi-target">Comfortable: &gt; 15%</div>
+                    <div class="kpi-trend stressed">&#x26a0; Critical &mdash; was 8.5%</div>
+                    <div class="kpi-bar red"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Quarters of LCR Decline</div>
+                    <div class="kpi-value" style="color:#de350b;">3</div>
+                    <div class="kpi-target">Consecutive quarters</div>
+                    <div class="kpi-trend stressed">&#x26a0; Persistent downtrend</div>
+                    <div class="kpi-bar red"></div>
+                </div>
+            </div>
+
+            <div class="liquidity-alert">
+                <span style="font-size:20px;">&#x1f6a8;</span>
+                <div>
+                    <div style="font-weight:600; color:#bf2600; margin-bottom:4px;">Liquidity Stress Alert</div>
+                    <div style="font-size:13px; color:#bf2600;">LCR has declined for 3 consecutive quarters (118.5% &rarr; 116.2% &rarr; 115.8%) and is now only 5.8% above the 110% regulatory floor. Immediate remedial action is recommended to prevent a breach.</div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>LCR Trend with Regulatory Floor</h3>
+                    <div class="chart-container"><canvas id="chartLiquidityLCR"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Buffer Erosion Timeline</h3>
+                    <div class="chart-container"><canvas id="chartLiquidityBuffer"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly KPI Detail</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Regulatory Min</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>LCR (%)</td><td>118.5</td><td>116.2</td><td class="val-bad">115.8</td><td class="val-bad">-0.4</td><td>110</td><td><span class="trend-badge stressed">&#x26a0; Stressed</span></td></tr>
+                        <tr><td>Buffer Above Min (%)</td><td>8.5</td><td>6.2</td><td class="val-bad">5.8</td><td class="val-bad">-0.4</td><td>&mdash;</td><td><span class="trend-badge stressed">&#x26a0; Low</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-card">
+                    <h3>Recommended Actions</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="t-date">Immediate</div>
+                            <div class="t-text">Review high-quality liquid asset (HQLA) portfolio and increase short-term liquid holdings</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="t-date">Within 30 days</div>
+                            <div class="t-text">Reduce concentration in volatile funding sources; diversify deposit base</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="t-date">Within 60 days</div>
+                            <div class="t-text">Conduct stress test on LCR under adverse scenarios; present findings to ALCO</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="t-date">Ongoing</div>
+                            <div class="t-text">Weekly LCR monitoring with automated alerts if buffer falls below 5%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3>Related Problem Area</h3>
+                    <p><strong>#7 Regional Risk Imbalance</strong> &mdash; Geographic concentration of defaults in certain regions is contributing to liquidity strain as provisioning requirements increase unevenly.</p>
+                    <ul class="info-list" style="margin-top:12px;">
+                        <li><span class="label">Root Cause</span><span>Local economic conditions</span></li>
+                        <li><span class="label">Impact</span><span class="severity-high">Geographic concentration risk</span></li>
+                        <li><span class="label">Severity</span><span class="severity-high">High</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- end tab-liquidity -->
+
+        <!-- ==================== TAB: MARKET RISK ==================== -->
+        <div class="tab-content" id="tab-market">
+            <div class="page-header">
+                <h2>Market Risk Dashboard</h2>
+                <p>Monitoring net interest margin, sector exposure, and market-driven vulnerabilities</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Net Interest Margin (NIM)</div>
+                    <div class="kpi-value">3.12%</div>
+                    <div class="kpi-target">Target: &gt; 3.0%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable across quarters</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">NIM Buffer Above Target</div>
+                    <div class="kpi-value">+0.12%</div>
+                    <div class="kpi-target">Comfortable: &gt; 0.3%</div>
+                    <div class="kpi-trend stressed">&#x26a0; Thin margin</div>
+                    <div class="kpi-bar orange"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Priority Sector Lending</div>
+                    <div class="kpi-value">42.1%</div>
+                    <div class="kpi-target">RBI Min: 40%</div>
+                    <div class="kpi-trend stable">&#x2192; Compliant</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Quarter Trend</div>
+                    <div class="kpi-value" style="font-size:18px;">3.10 &rarr; 3.15 &rarr; 3.12</div>
+                    <div class="kpi-target">Slight fluctuation</div>
+                    <div class="kpi-trend stable">&#x2192; Rangebound</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>NIM Trend with Target Band</h3>
+                    <div class="chart-container"><canvas id="chartMarketNIM"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Sector Exposure Risk</h3>
+                    <div class="chart-container"><canvas id="chartMarketSector"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly KPI Detail</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Target</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Net Interest Margin (%)</td><td>3.10</td><td>3.15</td><td>3.12</td><td class="val-bad">-0.03</td><td>3.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-card">
+                    <h3>Market Sensitivity Factors</h3>
+                    <ul class="info-list">
+                        <li><span class="label">Interest Rate Environment</span><span class="severity-med">Moderate pressure</span></li>
+                        <li><span class="label">Sector Volatility (MSME)</span><span class="severity-high">High</span></li>
+                        <li><span class="label">Agricultural Season Risk</span><span class="severity-high">High (monsoon-dependent)</span></li>
+                        <li><span class="label">Corporate Bond Spread</span><span class="severity-low">Stable</span></li>
+                    </ul>
+                </div>
+                <div class="detail-card">
+                    <h3>Related Problem Area</h3>
+                    <p><strong>#3 Sector-Specific Defaults</strong> &mdash; High defaults in MSME/Agriculture due to seasonal income and market volatility are creating concentrated credit risk that affects overall portfolio margins.</p>
+                    <ul class="info-list" style="margin-top:12px;">
+                        <li><span class="label">Root Cause</span><span>Seasonal income, market volatility</span></li>
+                        <li><span class="label">Impact</span><span class="severity-high">Concentrated credit risk</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- end tab-market -->
+
+        <!-- ==================== TAB: OPERATIONAL RISK ==================== -->
+        <div class="tab-content" id="tab-operational">
+            <div class="page-header">
+                <h2>Operational Risk Dashboard</h2>
+                <p>Monitoring cyber threats, system uptime, early warning systems, and credit appraisal processes</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Cyber Fraud Attempts</div>
+                    <div class="kpi-value">128</div>
+                    <div class="kpi-target">Target: &lt; 150</div>
+                    <div class="kpi-trend improving">&#x2193; Down from 162</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">YONO System Uptime</div>
+                    <div class="kpi-value">99.95%</div>
+                    <div class="kpi-target">Target: &gt; 99.9%</div>
+                    <div class="kpi-trend improving">&#x2191; Up from 99.85%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Fraud Detection Rate</div>
+                    <div class="kpi-value">94.2%</div>
+                    <div class="kpi-target">Target: &gt; 90%</div>
+                    <div class="kpi-trend improving">&#x2191; Up from 91.5%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Early Warning Alerts</div>
+                    <div class="kpi-value">342</div>
+                    <div class="kpi-target">Triggered in Q3</div>
+                    <div class="kpi-trend stable">&#x2192; 352 in Q2</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>Cyber Fraud Attempts &mdash; Quarterly Trend</h3>
+                    <div class="chart-container"><canvas id="chartOpsFraud"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>YONO System Uptime Trend</h3>
+                    <div class="chart-container"><canvas id="chartOpsUptime"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly KPI Detail</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Target</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Cyber Fraud Attempts (count)</td><td>145</td><td class="val-bad">162</td><td class="val-good">128</td><td class="val-good">-34</td><td>&lt; 150</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                        <tr><td>YONO System Uptime (%)</td><td>99.85</td><td>99.92</td><td class="val-good">99.95</td><td class="val-good">+0.03</td><td>99.9</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                        <tr><td>Early Warning Alerts (count)</td><td>356</td><td>352</td><td>342</td><td class="val-good">-10</td><td>Track</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                        <tr><td>Fraud Detection Rate (%)</td><td>91.5</td><td>92.8</td><td class="val-good">94.2</td><td class="val-good">+1.4</td><td>&gt; 90</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-card">
+                    <h3>Related Problem Areas</h3>
+                    <ul class="info-list">
+                        <li><span class="label">#4 Weak Early Warning System</span><span class="severity-high">High &mdash; No real-time dashboard</span></li>
+                        <li><span class="label">#8 Credit Appraisal Gaps</span><span class="severity-high">High &mdash; Outdated scoring models</span></li>
+                    </ul>
+                    <div style="margin-top:12px;">
+                        <h3 style="font-size:13px;">Implementation Status</h3>
+                        <p style="font-size:12px; color:#666; line-height:1.6;">Early Warning system now operational with 342 alerts triggered in Q3. Fraud Detection Rate improved to 94.2%. Focus now on upgrading credit scoring models to further reduce appraisal gaps.</p>
+                    </div>
+                </div>
+                <div class="detail-card">
+                    <h3>Recommended Implementations</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="t-date">Phase 1 (0&ndash;30 days)</div>
+                            <div class="t-text">Deploy real-time monitoring dashboard for early warning alerts</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="t-date">Phase 2 (30&ndash;60 days)</div>
+                            <div class="t-text">Upgrade credit scoring models; begin tracking Approval vs Default Ratio</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="t-date">Phase 3 (60&ndash;90 days)</div>
+                            <div class="t-text">Automate fraud detection pipelines; reduce manual review bottlenecks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end tab-operational -->
+
+        <!-- ==================== TAB: PERFORMANCE METRICS ==================== -->
+        <div class="tab-content" id="tab-performance">
+            <div class="page-header">
+                <h2>Performance & Profitability Dashboard</h2>
+                <p>Monitoring CASA ratio, profitability metrics, cost efficiency, and priority sector compliance</p>
+            </div>
+
+            <div class="section-title">Profitability Metrics <span class="badge">Q3 FY26</span></div>
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">Return on Assets (ROA)</div>
+                    <div class="kpi-value">0.82%</div>
+                    <div class="kpi-target">Target: &gt; 0.75%</div>
+                    <div class="kpi-trend improving">&#x2191; 0.71% &rarr; 0.82%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Return on Equity (ROE)</div>
+                    <div class="kpi-value">14.2%</div>
+                    <div class="kpi-target">Target: &gt; 12%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable at 14.x%</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Net Interest Margin (NIM)</div>
+                    <div class="kpi-value">3.12%</div>
+                    <div class="kpi-target">Target: &gt; 3.0%</div>
+                    <div class="kpi-trend stable">&#x2192; Stable</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Cost-to-Income Ratio</div>
+                    <div class="kpi-value">48.3%</div>
+                    <div class="kpi-target">Target: &lt; 50%</div>
+                    <div class="kpi-trend improving">&#x2193; 51.2% &rarr; 48.3%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+            </div>
+
+            <div class="section-title" style="margin-top: 24px;">Deposit & Lending Efficiency <span class="badge">Q3 FY26</span></div>
+            <div class="kpi-grid" style="grid-template-columns: repeat(4,1fr);">
+                <div class="kpi-card">
+                    <div class="kpi-label">CASA Ratio</div>
+                    <div class="kpi-value">45.8%</div>
+                    <div class="kpi-target">Target: &gt; 40%</div>
+                    <div class="kpi-trend improving">&#x2191; 44.2% &rarr; 45.8%</div>
+                    <div class="kpi-bar green"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Credit-Deposit Ratio</div>
+                    <div class="kpi-value">68.5%</div>
+                    <div class="kpi-target">Optimal: 65-75%</div>
+                    <div class="kpi-trend stable">&#x2192; Within range</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Priority Sector Lending</div>
+                    <div class="kpi-value">42.1%</div>
+                    <div class="kpi-target">RBI Min: 40%</div>
+                    <div class="kpi-trend stable">&#x2192; Compliant</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Yield on Advances</div>
+                    <div class="kpi-value">8.45%</div>
+                    <div class="kpi-target">Track trend</div>
+                    <div class="kpi-trend stable">&#x2192; 8.52% &rarr; 8.45%</div>
+                    <div class="kpi-bar blue"></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>ROA & ROE Trend (Q1&ndash;Q3 FY26)</h3>
+                    <div class="chart-container"><canvas id="chartPerfROA"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>CASA Ratio Trend</h3>
+                    <div class="chart-container"><canvas id="chartPerfCASA"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="chart-card">
+                    <h3>Cost-to-Income Ratio Trend</h3>
+                    <div class="chart-container"><canvas id="chartPerfCost"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <h3>Priority Sector Lending Breakdown</h3>
+                    <div class="chart-container"><canvas id="chartPerfPriority"></canvas></div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <h3>Quarterly Performance Metrics</h3>
+                <table>
+                    <thead>
+                        <tr><th>KPI</th><th>Q1 FY26</th><th>Q2 FY26</th><th>Q3 FY26</th><th>QoQ Change</th><th>Target</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ROA (%)</td><td>0.71</td><td>0.78</td><td class="val-good">0.82</td><td class="val-good">+0.04</td><td>&gt; 0.75</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                        <tr><td>ROE (%)</td><td>14.0</td><td>14.1</td><td>14.2</td><td class="val-good">+0.1</td><td>&gt; 12</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                        <tr><td>NIM (%)</td><td>3.10</td><td>3.15</td><td>3.12</td><td class="val-bad">-0.03</td><td>&gt; 3.0</td><td><span class="trend-badge stable">&#x2192; Stable</span></td></tr>
+                        <tr><td>Cost-to-Income (%)</td><td>51.2</td><td>49.8</td><td class="val-good">48.3</td><td class="val-good">-1.5</td><td>&lt; 50</td><td><span class="trend-badge improving">&#x2193; Improving</span></td></tr>
+                        <tr><td>CASA Ratio (%)</td><td>44.2</td><td>45.0</td><td class="val-good">45.8</td><td class="val-good">+0.8</td><td>&gt; 40</td><td><span class="trend-badge improving">&#x2191; Improving</span></td></tr>
+                        <tr><td>Credit-Deposit Ratio (%)</td><td>67.8</td><td>68.2</td><td>68.5</td><td>+0.3</td><td>65-75</td><td><span class="trend-badge stable">&#x2192; Optimal</span></td></tr>
+                        <tr><td>Priority Sector Lending (%)</td><td>41.8</td><td>42.0</td><td>42.1</td><td>+0.1</td><td>&gt; 40</td><td><span class="trend-badge stable">&#x2713; Compliant</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-card">
+                    <h3>Profitability Drivers</h3>
+                    <ul class="info-list">
+                        <li><span class="label">High CASA Ratio</span><span class="severity-low">Positive &mdash; Low-cost deposits</span></li>
+                        <li><span class="label">Improving Cost Efficiency</span><span class="severity-low">Positive &mdash; Below 50% threshold</span></li>
+                        <li><span class="label">Stable NIM</span><span class="severity-med">Watch &mdash; Thin buffer of 0.12%</span></li>
+                        <li><span class="label">ROA Growth</span><span class="severity-low">Positive &mdash; Above target consistently</span></li>
+                    </ul>
+                </div>
+                <div class="detail-card">
+                    <h3>Priority Sector Compliance</h3>
+                    <p style="font-size:13px; color:#555; margin-bottom:12px;">PSU banks are mandated by RBI to allocate 40% of Adjusted Net Bank Credit (ANBC) to priority sectors including agriculture, MSME, education, housing, and renewable energy.</p>
+                    <ul class="info-list">
+                        <li><span class="label">Agriculture</span><span>18.2% of ANBC</span></li>
+                        <li><span class="label">MSME</span><span>15.5% of ANBC</span></li>
+                        <li><span class="label">Others (Housing, Education)</span><span>8.4% of ANBC</span></li>
+                        <li><span class="label">Total</span><span class="severity-low">42.1% &#x2713; Compliant</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!-- end tab-performance -->
+
+        <!-- ==================== TAB: PROBLEM AREAS ==================== -->
+        <div class="tab-content" id="tab-problems">
+            <div class="page-header">
+                <h2>Problem Areas &mdash; Detailed View</h2>
+                <p>All 8 identified risk issues with root causes, impacts, and suggested KPIs</p>
+            </div>
+
+            <div class="kpi-grid" style="grid-template-columns: repeat(5,1fr); margin-bottom:28px;">
+                <div class="stat-box"><div class="stat-label">Total Issues</div><div class="stat-value">8</div><div class="stat-sub">Across 5 risk categories</div></div>
+                <div class="stat-box"><div class="stat-label">Credit Risk</div><div class="stat-value" style="color:#de350b;">3</div><div class="stat-sub">#1, #2, #5</div></div>
+                <div class="stat-box"><div class="stat-label">Capital Risk</div><div class="stat-value" style="color:#e6a817;">1</div><div class="stat-sub">#6</div></div>
+                <div class="stat-box"><div class="stat-label">Operational</div><div class="stat-value" style="color:#6554c0;">2</div><div class="stat-sub">#4, #8</div></div>
+                <div class="stat-box"><div class="stat-label">Market + Liquidity</div><div class="stat-value" style="color:#00a3bf;">2</div><div class="stat-sub">#3, #7</div></div>
+            </div>
+
+            <div class="problem-detail cr">
+                <h4>#1 &mdash; Rising NPAs</h4>
+                <div class="meta"><span style="background:#ffebe6; color:#bf2600;">Credit Risk</span><span>Severity: High</span><span>KPI: Gross NPA %, Net NPA %</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Increase in loans unpaid for 90+ days</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Economic slowdown, poor borrower screening, political lending pressure</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Reduced profitability, higher provisioning</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail cr">
+                <h4>#2 &mdash; Delayed EMI Payments</h4>
+                <div class="meta"><span style="background:#ffebe6; color:#bf2600;">Credit Risk</span><span>Severity: High</span><span>KPI: 30/60/90 Days Past Due (DPD)</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Customers missing monthly installments</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Income instability, job loss, weak follow-up system, dies, took for short term project and lost money in long term project, leaves India, prejudicial loan, incorrect terms</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Cash flow disruption</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail mk">
+                <h4>#3 &mdash; Sector-Specific Defaults</h4>
+                <div class="meta"><span style="background:#e6fcff; color:#008da6;">Market Risk</span><span>Severity: Medium</span><span>KPI: Sector-wise NPA ratio</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">High defaults in MSME/Agriculture</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Seasonal income, market volatility</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Concentrated credit risk</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail op">
+                <h4>#4 &mdash; Weak Early Warning System</h4>
+                <div class="meta"><span style="background:#f3f0ff; color:#5243aa;">Operational Risk</span><span>Severity: High</span><span>KPI: Early Warning Alerts Count</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Risk identified too late</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Lack of real-time monitoring dashboard</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Higher default conversion</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail cr">
+                <h4>#5 &mdash; Poor Recovery Rate</h4>
+                <div class="meta"><span style="background:#ffebe6; color:#bf2600;">Credit Risk</span><span>Severity: Medium</span><span>KPI: Recovery Rate %</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Low success in loan recovery</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Legal delays, lack of recovery automation</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Increased write-offs</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail ca">
+                <h4>#6 &mdash; Loan Restructuring</h4>
+                <div class="meta"><span style="background:#fff8e6; color:#a67c00;">Capital Risk</span><span>Severity: High</span><span>KPI: Restructured Loan %</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Growing number of restructured loans</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Borrower financial stress</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Hidden future NPAs</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail lq">
+                <h4>#7 &mdash; Regional Risk Imbalance</h4>
+                <div class="meta"><span style="background:#deebff; color:#0747a6;">Liquidity Risk</span><span>Severity: High</span><span>KPI: Region-wise Risk Heatmap</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Some regions show higher defaults</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Local economic conditions</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Geographic concentration risk</div></div>
+                </div>
+            </div>
+
+            <div class="problem-detail op">
+                <h4>#8 &mdash; Credit Appraisal Gaps</h4>
+                <div class="meta"><span style="background:#f3f0ff; color:#5243aa;">Operational Risk</span><span>Severity: High</span><span>KPI: Approval vs Default Ratio</span></div>
+                <div class="detail-grid">
+                    <div><div class="dg-label">What is Happening</div><div class="dg-value">Risky customers getting approved</div></div>
+                    <div><div class="dg-label">Why</div><div class="dg-value">Outdated credit scoring models</div></div>
+                    <div><div class="dg-label">Impact</div><div class="dg-value">Long-term portfolio deterioration</div></div>
+                </div>
+            </div>
+
+            <div class="detail-card" style="margin-top:8px;">
+                <h3>Additional Context</h3>
+                <p style="font-size:13px; color:#666; line-height:1.6;">Government schemes to promote startups which fail 90%. Repayment not probable after giving loans to poor people. These systemic factors contribute to elevated NPAs and need policy-level intervention alongside bank-level risk management improvements.</p>
+            </div>
+        </div><!-- end tab-problems -->
+
+        <div class="footer">
+            WIREFRAME &mdash; Bank Risk Management Dashboard &bull; Data: FY 2025-26 (Q1&ndash;Q3) &bull; Layout Prototype v1.0
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
